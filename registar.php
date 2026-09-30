@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Cifra a password com Hash + Salt (Aula 04 e 06)
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepared Statement contra SQL Injection (Aula 03)

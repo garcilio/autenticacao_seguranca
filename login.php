@@ -8,12 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Prepared Statement para consulta segura (Aula 03)
     $stmt = $pdo->prepare("SELECT * FROM utilizadores WHERE username = ?");
     $stmt->execute([$username]);
     $user = $stmt->fetch();
 
-    // Valida a hash da password (Aula 06)
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['utilizador'] = $user['username'];
         header("Location: index.php");
